@@ -1,0 +1,296 @@
+/* 1. Sare Imports sabse upar */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&display=swap');
+@import 'swiper/css';
+@import 'swiper/css/effect-fade';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+/* 2. Tailwind Directives ab niche aayenge */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    /* Primary - Deep Navy Blue (Government Trust) */
+    --primary: 220 70% 25%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Saffron - Indian Pride Accent */
+    --accent: 28 90% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Backgrounds */
+    --background: 210 40% 98%;
+    --foreground: 220 30% 15%;
+    
+    /* Cards - Glassmorphism Ready */
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 15%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 15%;
+    
+    /* Secondary - Soft Blue */
+    --secondary: 210 50% 95%;
+    --secondary-foreground: 220 70% 25%;
+    
+    /* Muted */
+    --muted: 210 30% 96%;
+    --muted-foreground: 220 15% 45%;
+    
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Success - Green */
+    --success: 142 70% 35%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning - Amber */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 220 70% 25%;
+    
+    --radius: 0.625rem;
+    
+    /* Hero Gradient */
+    --hero-gradient: linear-gradient(135deg, hsl(220 70% 20%) 0%, hsl(220 60% 35%) 50%, hsl(28 80% 45%) 100%);
+    --glass-bg: hsla(0, 0%, 100%, 0.85);
+    --glass-border: hsla(0, 0%, 100%, 0.3);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsla(220, 30%, 15%, 0.05);
+    --shadow-md: 0 4px 6px -1px hsla(220, 30%, 15%, 0.1), 0 2px 4px -2px hsla(220, 30%, 15%, 0.1);
+    --shadow-lg: 0 10px 15px -3px hsla(220, 30%, 15%, 0.1), 0 4px 6px -4px hsla(220, 30%, 15%, 0.1);
+    --shadow-xl: 0 20px 25px -5px hsla(220, 30%, 15%, 0.1), 0 8px 10px -6px hsla(220, 30%, 15%, 0.1);
+    --shadow-glass: 0 8px 32px 0 hsla(220, 30%, 15%, 0.15);
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --primary: 210 60% 60%;
+    --primary-foreground: 220 30% 10%;
+    
+    --accent: 28 85% 55%;
+    --accent-foreground: 0 0% 100%;
+    
+    --background: 220 30% 8%;
+    --foreground: 210 40% 98%;
+    
+    --card: 220 30% 12%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 220 30% 12%;
+    --popover-foreground: 210 40% 98%;
+    
+    --secondary: 220 30% 15%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 220 25% 18%;
+    --muted-foreground: 215 20% 65%;
+    
+    --border: 220 25% 20%;
+    --input: 220 25% 20%;
+    --ring: 210 60% 60%;
+    
+    --glass-bg: hsla(220, 30%, 12%, 0.85);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Sans', 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply relative backdrop-blur-xl rounded-xl border;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Government Badge Styles */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    background: linear-gradient(135deg, hsla(142, 70%, 35%, 0.15) 0%, hsla(142, 70%, 35%, 0.05) 100%);
+    border: 1px solid hsla(142, 70%, 35%, 0.3);
+    color: hsl(142, 70%, 30%);
+  }
+
+  /* Hero Section */
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .hero-overlay {
+    background: linear-gradient(180deg, hsla(220, 70%, 15%, 0.7) 0%, hsla(220, 60%, 20%, 0.85) 50%, hsla(220, 50%, 25%, 0.95) 100%);
+  }
+
+  /* Scheme Card */
+  .scheme-card {
+    @apply relative bg-card rounded-xl border border-border p-6 transition-all duration-300;
+    box-shadow: var(--shadow-md);
+  }
+
+  .scheme-card:hover {
+    @apply border-primary/30;
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+  }
+
+  .scheme-card-featured {
+    @apply scheme-card;
+    border-left: 4px solid hsl(var(--accent));
+  }
+
+  /* Form Styles */
+  .form-step-indicator {
+    @apply flex items-center justify-center w-10 h-10 rounded-full text-sm font-semibold transition-all duration-300;
+  }
+
+  .form-step-active {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .form-step-completed {
+    @apply bg-success text-success-foreground;
+  }
+
+  .form-step-pending {
+    @apply bg-muted text-muted-foreground;
+  }
+
+  /* Document Badge */
+  .document-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium;
+    background: hsla(220, 70%, 25%, 0.08);
+    color: hsl(220, 70%, 30%);
+    border: 1px solid hsla(220, 70%, 25%, 0.15);
+  }
+
+  /* Category Tag */
+  .category-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-md text-xs font-medium uppercase tracking-wider;
+  }
+
+  .category-tag-central {
+    @apply category-tag;
+    background: hsla(220, 70%, 25%, 0.1);
+    color: hsl(220, 70%, 30%);
+  }
+
+  .category-tag-state {
+    @apply category-tag;
+    background: hsla(28, 90%, 50%, 0.1);
+    color: hsl(28, 80%, 40%);
+  }
+
+  /* Section Divider */
+  .section-divider {
+    @apply relative;
+  }
+
+  .section-divider::before {
+    content: '';
+    @apply absolute left-1/2 -translate-x-1/2 w-24 h-1 rounded-full;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* Animated Underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* Skeleton Animation */
+  .skeleton-loading {
+    @apply relative overflow-hidden bg-muted;
+  }
+
+  .skeleton-loading::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent 0%, hsla(0, 0%, 100%, 0.4) 50%, transparent 100%);
+    animation: skeleton-shimmer 1.5s infinite;
+  }
+
+  @keyframes skeleton-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  /* Fade In Up Animation */
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger Animation Delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* India Pattern Background */
+  .india-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF9933' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+}
